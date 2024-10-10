@@ -20,9 +20,18 @@ pragma solidity ^0.8.0;
 contract DataStorage {
     uint256 public data;
     string public imageHash;
+    string private dataString;
 
-    function setData(uint256 _data) public {
-        data = _data;
+    // function setData(uint256 _data,address payable _receiver) external payable{
+    //      data = _data;
+    //      require(msg.value > 0, "Send some Ether");
+    //      _receiver.transfer(msg.value);
+        
+    // }
+
+    function setData(address payable _to) public payable {
+        require(msg.value > 0, "Send a positive amount of ETH");
+        _to.transfer(msg.value);
     }
 
     function retrieveData() public view returns (uint256) {
