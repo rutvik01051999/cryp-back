@@ -7,6 +7,12 @@ async function main() {
     const dataStorage = await DataStorage.deploy();
     await dataStorage.deployed();
     console.log("DataStorage deployed to:", dataStorage.address);
+
+    const ImageStorage = await ethers.getContractFactory("ImageStorage");
+    const imageStorage = await ImageStorage.deploy();
+    await imageStorage.deployed();
+
+    console.log("ImageStorage contract deployed to:", imageStorage.address);
 }
 
 main()
