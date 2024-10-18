@@ -8,11 +8,12 @@ async function main() {
     await dataStorage.deployed();
     console.log("DataStorage deployed to:", dataStorage.address);
 
-    const ImageStorage = await ethers.getContractFactory("ImageStorage");
-    const imageStorage = await ImageStorage.deploy();
-    await imageStorage.deployed();
-
-    console.log("ImageStorage contract deployed to:", imageStorage.address);
+    const ImageStorage = await ethers.getContractFactory("NftSign");
+    const nftSign = await ImageStorage.deploy("My NFT Sign");  // Here, "My NFT Sign" is the argument passed to the constructor
+    await nftSign.deployed();
+    // const imageStorage = await ImageStorage.deploy();
+    // await imageStorage.deployed();
+    console.log("ImageStorage contract deployed to:", nftSign.address);
 }
 
 main()
