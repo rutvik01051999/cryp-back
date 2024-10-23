@@ -1,21 +1,22 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract NftSign {
-    string public storedString;
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-    // Constructor to initialize the string (optional)
-    constructor(string memory initialString) {
-        storedString = initialString;
+contract NftSign is ERC721URIStorage, Ownable {
+    uint256 public tokenCounter;
+
+    constructor() ERC721("MyNFT", "MNFT") Ownable(0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199)  {
+        tokenCounter = 0;
     }
 
-    // Function to set the string value
-    function setString(string memory newString) public {
-        storedString = newString;
-    }
-
-    // Function to get the string value (already public)
-    function getString() public view returns (string memory) {
-        return storedString;
+    function mintNFT(address recipient, string memory tokenURI) public onlyOwner returns (uint256) {
+        uint256 newItemId = tokenCounter;
+        _safeMint(recipient, newItemId);
+        _setTokenURI(newItemId, tokenURI);
+        tokenCounter++;
+        return newItemId;
     }
 }
