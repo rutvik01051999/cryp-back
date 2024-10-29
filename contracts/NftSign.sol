@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract NftSign is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
 
-    constructor() ERC721("MyNFT", "MNFT") Ownable(0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199)  {
+    constructor() ERC721("MyNFT", "MNFT") Ownable(0xDff8af062dffEEBaEBE88066FF1b1045070372a1)  {
         tokenCounter = 0;
     }
 

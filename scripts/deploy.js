@@ -14,9 +14,9 @@ async function main() {
     console.log("ImageStorage contract deployed to:", nftSign.address);
 
 
-    const MyNFT = await ethers.getContractAt("NftSign", "0x5FbDB2315678afecb367f032d93F642f64180aa3");
-    const owner = await MyNFT.ownerOf("1");
-    console.log(owner);
+    // const MyNFT = await ethers.getContractAt("NftSign", "0x5FbDB2315678afecb367f032d93F642f64180aa3");
+    // const owner = await MyNFT.ownerOf("1");
+    // console.log(owner);
 
     // const baseURI = "https://example.com/api/nft/";
     // const MyNFT = await ethers.getContractFactory("NftSign");
